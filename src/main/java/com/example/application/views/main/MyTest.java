@@ -1,3 +1,5 @@
+package com.example.application.views.main;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;

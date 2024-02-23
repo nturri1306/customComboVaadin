@@ -1,32 +1,48 @@
 package com.example.application.views.main;
 
-import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.notification.Notification;
+
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+
+import java.util.UUID;
+import java.util.ArrayList;
+
 @PageTitle("Main")
 @Route(value = "")
+//@JsModule("./src/custom-combo-box.js")
 public class MainView extends HorizontalLayout {
 
-    private TextField name;
-    private Button sayHello;
 
     public MainView() {
-        name = new TextField("Your name");
-        sayHello = new Button("Say hello");
-        sayHello.addClickListener(e -> {
-            Notification.show("Hello " + name.getValue());
+
+      /*  CustomComboBox customComboBox = new CustomComboBox();
+        customComboBox.setItems(Arrays.asList("Elemento 1", "Elemento 2", "Elemento 3"));
+        customComboBox.addValueChangeListener(event -> {
+            String selectedValue = event.getValue();
+            // Logica per gestire la selezione dell'elemento dalla ComboBox personalizzata
         });
-        sayHello.addClickShortcut(Key.ENTER);
 
-        setMargin(true);
-        setVerticalComponentAlignment(Alignment.END, name, sayHello);
+        add(customComboBox);*/
 
-        add(name, sayHello);
+        add(new MyTest("World"));
+
+        add(new Div());
+
+        CustomComboBox customCombo = new CustomComboBox();
+
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i < 100; i++)
+            list.add(UUID.randomUUID().toString());
+
+
+        customCombo.setItems(list);
+
+
+        add(customCombo);
     }
 
 }
